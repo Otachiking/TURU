@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registrasi Pengguna</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="min-h-screen bg-[#080821] flex items-center justify-center p-4 login">
+  <div class="w-full max-w-md space-y-8">
+    <div class="bg-[#080821] p-8 rounded-lg border border-indigo-900">
+      <h2 id="form-title" class="text-2xl font-bold text-white mb-8 text-center">
+        Registrasi Pengguna
+      </h2>
+
+      <form id="formId" class="space-y-4" action="/register" method="post">
+        <!-- Username -->
+        <div class="relative">
+          <input type="text" id="username" name="username" placeholder="Masukkan Username"
+            class="w-full px-4 py-3 bg-white rounded-lg pl-10" required>
+          <span class="absolute left-3 top-3.5 text-gray-400">👤</span>
+          <div th:if="${errors['usernameError']}" th:text="${errors['usernameError']}" class="error"></div>
+        </div>
+
+        <!-- Password -->
+        <div class="relative">
+          <input type="password" id="password" name="password" placeholder="Masukkan Kata Sandi"
+            class="w-full px-4 py-3 bg-white rounded-lg pl-10" required>
+          <span class="absolute left-3 top-3.5 text-gray-400">🔑</span>
+          <div th:if="${errors['passwordError']}" th:text="${errors['passwordError']}" class="error"></div>
+        </div>
+
+        <!-- Tanggal Lahir -->
+        <div class="relative">
+          <input type="date" name="tanggalLahir" placeholder="Masukkan Tanggal Lahir"
+            class="w-full px-4 py-3 bg-white rounded-lg pl-10" required />
+          <span class="absolute left-3 top-3.5 text-gray-400">📅</span>
+        </div>
+
+        <!-- Jenis Kelamin -->
+        <div class="grid grid-cols-2 gap-4">
+          <button type="button"
+            class="flex items-center py-3 px-4 rounded-lg bg-gray-200 text-gray-800 hover:bg-blue-200 transition-colors"
+            id="male-button" onclick="selectGender('L')">
+            <span class="ml-3">♂️</span>
+            <span class="ml-3">Laki-laki</span>
+          </button>
+
+          <button type="button"
+            class="flex items-center py-3 px-4 rounded-lg bg-gray-200 text-gray-800 hover:bg-pink-200 transition-colors"
+            id="female-button" onclick="selectGender('P')">
+            <span class="ml-3">♀️</span>
+            <span class="ml-3">Perempuan</span>
+          </button>
+        </div>
+
+        <!-- Hidden Radio Buttons for Form Submission -->
+        <input type="radio" name="jk" value="L" id="gender-male" class="hidden" required>
+        <input type="radio" name="jk" value="P" id="gender-female" class="hidden" required>
+        <div id="genderError" class="error"></div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="w-full py-3 bg-indigo-600 text-white rounded-lg">Register</button>
+
+        <a href="/login" class="block w-full py-3 text-center bg-indigo-600 text-white rounded-lg mt-4">
+          Sudah Punya Akun
+        </a>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function selectGender(gender) {
+      const maleButton = document.getElementById('male-button');
+      const femaleButton = document.getElementById('female-button');
+      const genderMaleInput = document.getElementById('gender-male');
+      const genderFemaleInput = document.getElementById('gender-female');
+
+      if (gender === 'L') {
+        maleButton.classList.add('bg-blue-500', 'text-white');
+        femaleButton.classList.remove('bg-pink-500', 'text-white');
+        genderMaleInput.checked = true;
+        genderFemaleInput.checked = false;
+      } else if (gender === 'P') {
+        femaleButton.classList.add('bg-pink-500', 'text-white');
+        maleButton.classList.remove('bg-blue-500', 'text-white');
+        genderFemaleInput.checked = true;
+        genderMaleInput.checked = false;
+      }
+    }
+  </script>
+</body>
+
+</html>

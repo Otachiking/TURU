@@ -1,0 +1,552 @@
+:root {
+    --lilac: #2B194F;
+    --indigo: #514FC2;
+    --biscay: #18306D;
+    --blue: #35A4DA !important;
+    --purple: #8C4FC2;
+    --pink: #DA5798;
+
+    --backdrop-color: #151619;
+    --canvas-color: #02021d;
+    --navbar-color: #08082f;
+    --header-bg-opacity: rgba(0, 0, 0, 0.25);
+    --button-color: #007bff;
+
+    --text-color: #ffffff;
+    --text-color2: #8e8e8e;
+    --text-color-black: #000000;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    max-height: 100vh;
+    background-color: var(--backdrop-color);
+    margin: 0;
+    padding: 0;
+    position: relative;
+    color: var(--text-color);
+    overflow: hidden;
+}
+
+body.login {
+    color: var(--text-color-black);
+}
+
+/*========== MAIN ==========*/
+.header {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    max-width: 480px;
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 24px;
+    background-color: var(--header-bg-opacity);
+    color: var(--text-color);
+    font-size: 1rem;
+    z-index: 10;
+}
+
+.canvas-mobile {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 480px;
+    width: 100%;
+    height: 100vh; /* Full viewport height */
+    padding-bottom: 85px;
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+    background-color: var(--canvas-color);
+    border-radius: 16px 16px 24px 24px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    scroll-behavior: smooth;
+    scrollbar-width: none; 
+    scrollbar-color: var(--indigo) transparent;
+    z-index: 2;
+}
+
+
+
+.canvas-mobile > .content {
+    flex: 1; /* Allow content to take up remaining space */
+    overflow-y: auto; /* Enable scrolling for overflowing content */
+    padding: 8%;
+    padding-top: 64px; /* Extra space for fixed header */
+    padding-bottom: 70px; /* Extra space for fixed navbar */
+}
+
+.canvas-mobile::-webkit-scrollbar {
+    width: 2px !important;
+}
+
+.canvas-mobile::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.canvas-mobile.radio{
+    background-image:         
+        linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+        url("../asset/BG_Radio.svg");
+    background-size: cover;
+    background-position: bottom;
+    background-repeat: no-repeat;
+}
+
+.content {
+    padding: 8%;
+    padding-top: 64px; /* Extra space for fixed header */
+}
+
+.content.beranda {
+    background-image: url("../asset/BG_Beranda.svg") !important;
+    background-attachment: local !important;
+    background-size: cover;
+}
+
+.content.radio button{
+    margin-right: 2%;
+}
+
+/*========== NAVBAR ==========*/
+.navbar {
+    position: fixed;
+    bottom: 0 !important;
+    max-width: 480px;
+    width: 100%;
+    background-color: var(--navbar-color);
+    padding: 5px 0;
+    box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.5);
+    z-index: 10;
+}
+
+.navbar-nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.nav-link {
+    text-align: center;
+    color: var(--text-color);
+    font-size: 14px;
+    font-weight: 500 !important;
+}
+
+a.nav-link{
+    /* Active navbar link */
+        min-width: 85px;
+}
+
+.nav-icon {
+    font-size: 24px;
+    display: block;
+}
+
+/* Active navbar link */
+.nav-link.active {
+    color: var(--indigo) !important; /* Indigo color for active */
+    position: relative;
+    font-weight: bold !important;
+}
+
+/* Active indicator line */
+.nav-link.active::after {
+    content: '';
+    position: absolute;
+    top: 0px; /* Move the indicator above the link */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50%; /* Adjust width if necessary */
+    height: 3px;
+    background-color: var(--indigo);
+    border-radius: 2px;
+}
+
+
+/* Hover effect */
+.nav-link:hover {
+    color: var(--indigo); /* Optional: Purple for hover */
+    transition: color 0.3s, transform 0.3s; /* Smooth transition */
+}
+
+/*==========BERANDA==========*/
+.center{
+    text-align: center !important;
+    align-items: center !important;
+    justify-content: center !important;
+    justify-self: center !important;
+    justify-items: center !important;
+}
+
+.turu-button {
+    width: 150px; /* Set a specific width */
+    height: 150px; /* Same as width */
+    background-color: var(--lilac);
+    border-color: var(--purple);
+    border-radius: 50%;
+    border-width: thick;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0; /* No padding to avoid distorting the shape */
+    font-size: 64px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.turu-button i {
+    margin-right: 8px;
+    font-size: 20px;
+}
+
+.stopwatch-button {
+    width: 100%;
+    height: 250px;
+    margin: 20px auto;
+    border-radius: 50%;
+    background-color: var(--button-color);
+    color: var(--text-color);
+    font-size: 2rem;
+    border: none;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.tips-button {
+    margin-top: 32%;
+    margin-bottom: 75%;
+    background-color: var(--indigo); /* Warna ungu selaras dengan tema */
+    color: #fff !important; /* Warna teks putih */
+    border: none;
+    box-shadow: 0px 0px 16px 4px rgba(81, 79, 194, 0.746);
+    border-radius: 8px; /* Membuat sudut tombol melengkung */
+    font-size: 16px; /* Ukuran font */
+    padding: 8px 20px; /* Padding tombol */
+    text-decoration: none;
+  }
+  
+  .tips-button:hover {
+    background-color: #5a4dba; /* Warna ungu lebih gelap saat di-hover */
+  }
+
+/*========== FLOATING BUTTON ==========*/
+/* Floating Button Styling */
+
+.floating-btn i {
+    font-size: 28px;    
+}
+.floating-btn {
+    position: fixed;
+    min-width: 80px;
+    bottom: 120px;
+    right: 32px;
+    background-color: var(--pink, #DA5798); /* Use your CSS variable or fallback color */
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+}
+
+/* Hover Effect */
+.floating-btn:hover {
+    background-color: #C94B89; /* Slightly darker pink for hover */
+}
+
+/* Focus State */
+.floating-btn:focus {
+    outline: none;
+    box-shadow: 0 0 8px rgba(218, 87, 152, 0.8);
+}
+
+/*========== STATISTIK ==========*/
+.col {
+    padding-right: 4px;
+    transform: translateX(-12%);
+    margin-bottom: 8pt;
+}
+
+.subtitle{
+    font-size: 16pt;
+    font-weight: 500;
+    font-style: italic;
+    color: var(--pink);
+}
+
+#timestampDisplay, #mascotDescriptionDisplay  {
+    text-align: center;
+    font-size: 1rem;
+    max-width: 75%;
+    color: var(--text-color2);
+}
+
+#mascotDisplay{
+    font-size: 78pt;
+    font-weight: 500;
+}
+
+#scoreDisplay{
+    font-size: 40pt;
+    padding-top: 20%;
+    font-weight: 500;
+}
+
+#durationDisplay{
+    color: var(--text-color);
+    font-size: 32pt;
+    font-weight: 500;
+    margin: 16px 0px;
+}
+
+.kotakAreaStatistik{
+    margin-top: 5%;
+    width: 100%;
+    min-height: 300px;
+    border-radius: 16pt;
+    background-color: var(--blue);
+}
+
+/*========== RADIO ==========*/
+.song-btn {
+    color: gray;
+    padding-left: 2%;
+    padding-right: 2%;
+    margin-bottom: 3%;
+    background: whitesmoke;
+    border-width: 4px;
+    border-radius: 8px;
+    font-weight: 500;
+    border-style: outset;
+    border-color: var(--button-border-color);
+    position: relative;
+}
+
+.song-btn:hover {
+    background: whitesmoke;
+    color: var(--button-border-color) !important;
+    border-color: var(--button-border-color);
+    transition: all 0.3s ease-in-out;
+}
+
+.song-btn[data-color] {
+    border-color: var(--button-border-color);
+}
+
+.song-btn.active {
+    color: white !important;
+    background: currentColor; /* Matches the border color */
+}
+
+
+/*========== LOGIN/REGISTER ==========*/
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--indigo);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 16px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: #4338ca;
+}
+
+.switch-btn {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    padding: 12px;
+    background-color: transparent;
+    color: var(--indigo);
+    border: 1px solid var(--indigo);
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.switch-btn:hover {
+    background-color: rgba(79, 70, 229, 0.1);
+}
+
+.error {
+    color: red;
+    font-size: 12px;
+    margin-top: 4px;
+  }
+
+
+
+/*========== TIPS.html ==========*/
+/* Tombol Unik dengan Warna Berbeda */
+.custom-btn-purple {
+    background-color: #9b59b6 !important; /* Ungu */
+    color: #fff;
+    border: none;
+    border-radius: 30px; /* Bentuk lonjong */
+    padding: 10px 20px;
+    font-weight: 500;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .custom-btn-teal {
+    background-color: #1abc9c !important; /* Hijau Tosca */
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 20px;
+    font-weight: 500;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .custom-btn-orange {
+    background-color: #e67e22 !important; /* Oranye */
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 20px;
+    font-weight: 500;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  /* Efek Hover untuk Tombol */
+  .custom-btn-purple:hover,
+  .custom-btn-teal:hover,
+  .custom-btn-orange:hover {
+    transform: scale(1.05); /* Perbesar sedikit */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Tambahkan bayangan */
+  }
+  
+  /* Styling Tombol Kembali ke Beranda */
+  .btn-primary {
+    margin-top: 20px;
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 30px; /* Bentuk lonjong */
+    background-color: #6c5ce7; /* Warna ungu */
+    border: none;
+  }
+  
+  .btn-primary:hover {
+    background-color: #5a4dba; /* Warna ungu lebih gelap */
+  }
+
+  /* Styling Tabel dengan Tema UI Gelap */
+.custom-table {
+    background-color: #1e1e2e; /* Warna latar tabel gelap */
+    color: #ffffff; /* Warna teks putih */
+    border-collapse: separate; /* Memberi jarak pada border */
+    border-spacing: 0; /* Hilangkan jarak default antar sel */
+    border-radius: 12px; /* Sudut tabel melengkung */
+    overflow: hidden; /* Agar border-radius terlihat */
+    width: 100%;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); /* Efek bayangan */
+  }
+  
+  .custom-table thead {
+    background-color: #6c5ce7; /* Warna ungu untuk header tabel */
+    color: #ffffff; /* Warna teks putih */
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  .custom-table th,
+  .custom-table td {
+    padding: 12px 16px; /* Padding sel tabel */
+    border: 1px solid #4b4b6b; /* Border dengan warna lembut */
+    text-align: center; /* Posisi teks di tengah */
+  }
+  
+  .custom-table tbody tr:nth-child(even) {
+    background-color: #25253a; /* Warna gelap untuk baris genap */
+  }
+  
+  .custom-table tbody tr:nth-child(odd) {
+    background-color: #2b2b45; /* Warna sedikit lebih terang untuk baris ganjil */
+  }
+  
+  .custom-table tbody tr:hover {
+    background-color: #6c5ce7; /* Warna ungu saat di-hover */
+    color: #ffffff; /* Warna teks saat hover */
+    transition: background-color 0.3s ease-in-out;
+  }
+
+    /* Menyesuaikan lebar kolom tabel */
+  .custom-table {
+    width: 90%; /* Lebar tabel tetap 100% */
+    margin: 0 auto; /* Tengah di halaman */
+  }
+  
+  .custom-table th,
+  .custom-table td {
+    padding: 8px 12px; /* Padding untuk konten di sel tabel */
+    text-align: center; /* Posisi teks di tengah */
+  }
+  
+  .custom-table thead th {
+    font-size: 0.9rem; /* Ukuran font header */
+    background-color: #6c5ce7; /* Warna ungu header */
+    color: #ffffff; /* Warna teks putih */
+    font-weight: bold;
+  }
+  
+  .custom-table tbody td {
+    font-size: 0.85rem; /* Ukuran font isi tabel */
+  }
+  
+  /* Lebar khusus untuk kolom */
+  .custom-table thead th:first-child,
+  .custom-table tbody td:first-child {
+    width: 70%; /* Lebarkan kolom "Kelompok Usia" */
+    text-align: left; /* Rata kiri untuk teks di kolom ini */
+  }
+  
+  .custom-table thead th:last-child,
+  .custom-table tbody td:last-child {
+    width: 30%; /* Persempit kolom "Lama Tidur yang Disarankan" */
+  }
+
+/*========== HIASAN ==========*/
+.dot {
+    position: absolute;
+    border-radius: 50%;
+    z-index: 1; /* Below canvas-mobile */
+}
+
+/*========== SCROLL ==========*/
+/* Slim and Transparent Scrollbar */
+::-webkit-scrollbar {
+    width: 5px;
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.3) transparent;
+}
